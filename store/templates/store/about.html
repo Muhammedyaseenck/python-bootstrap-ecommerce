@@ -1,0 +1,38 @@
+{% extends "store/base.html" %}
+{% block title %}About us{% endblock %}
+
+{% block content %}
+<section class="container py-4">
+  <div class="row g-5 align-items-center">
+    <div class="col-lg-6">
+      <h1 class="display-6 mb-3">A small store with a simple idea</h1>
+      <p>Bazaar is an online store built as a Django and Bootstrap class project. It shows how a real shop is put together: a product database, pages that read from it, and a layout that works on every screen size.</p>
+      <p>Every product on the site is loaded from the <code>Product</code> table. Add, edit or remove items in the admin panel and the store updates straight away.</p>
+    </div>
+    <div class="col-lg-6">
+      <img src="https://picsum.photos/seed/bazaar-about/900/650" class="img-fluid rounded" alt="Shop shelves with products">
+    </div>
+  </div>
+
+  <div class="row g-4 mt-4">
+    <div class="col-md-4">
+      <div class="info-block h-100">
+        <h2 class="h5">Fair prices</h2>
+        <p class="mb-0 text-muted">Every price is shown in rupees with no hidden charges.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="info-block h-100">
+        <h2 class="h5">Easy browsing</h2>
+        <p class="mb-0 text-muted">Search by name and move through pages of products at your own pace.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="info-block h-100">
+        <h2 class="h5">Works on any screen</h2>
+        <p class="mb-0 text-muted">Bootstrap's grid adapts the layout for phones, tablets and desktops.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

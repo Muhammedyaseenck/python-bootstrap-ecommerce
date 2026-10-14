@@ -1,0 +1,59 @@
+{% extends "store/base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if featured_products %}
+<div id="featuredCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    {% for product in featured_products %}
+      <button type="button" data-bs-target="#featuredCarousel" data-bs-slide-to="{{ forloop.counter0 }}"
+              {% if forloop.first %}class="active" aria-current="true"{% endif %}
+              aria-label="Slide {{ forloop.counter }}"></button>
+    {% endfor %}
+  </div>
+  <div class="carousel-inner">
+    {% for product in featured_products %}
+    <div class="carousel-item {% if forloop.first %}active{% endif %}" data-bs-interval="5000">
+      <img src="{{ product.image_url }}" class="d-block w-100" alt="{{ product.title }}">
+      <div class="carousel-caption-panel">
+        <div class="container">
+          <p class="mb-1 small">Featured</p>
+          <h1 class="display-6">{{ product.title }}</h1>
+          <p class="d-none d-md-block mb-3">{{ product.description|truncatechars:110 }}</p>
+          <p class="fs-4 fw-bold mb-3">&#8377;{{ product.price|floatformat:"0g" }}</p>
+          <a href="{% url 'product_list' %}" class="btn btn-sun btn-lg">Shop now</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+{% else %}
+<section class="container py-5 text-center">
+  <h1 class="display-6">The shelves are empty</h1>
+  <p class="text-muted">Add products in the admin panel, or run <code>python manage.py seed_products</code>.</p>
+</section>
+{% endif %}
+
+{% if latest_products %}
+<section class="container mt-5">
+  <div class="d-flex justify-content-between align-items-end mb-3">
+    <h2 class="h4 mb-0">New arrivals</h2>
+    <a href="{% url 'product_list' %}" class="link-ink">See all products</a>
+  </div>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
+    {% for product in latest_products %}
+      <div class="col">{% include "store/_product_card.html" %}</div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+{% endblock %}

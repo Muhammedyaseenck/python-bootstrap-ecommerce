@@ -1,0 +1,50 @@
+{% extends "store/base.html" %}
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<section class="container pt-4">
+  <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-end mb-4 gap-2">
+    <div>
+      <h1 class="h3 mb-1">{% if query %}Results for "{{ query }}"{% else %}All products{% endif %}</h1>
+      <p class="text-muted mb-0">{{ paginator.count }} item{{ paginator.count|pluralize }}</p>
+    </div>
+    {% if query %}<a href="{% url 'product_list' %}" class="link-ink">Clear search</a>{% endif %}
+  </div>
+
+  {% if products %}
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
+    {% for product in products %}
+      <div class="col">{% include "store/_product_card.html" %}</div>
+    {% endfor %}
+  </div>
+
+  {% if is_paginated %}
+  <nav class="mt-5" aria-label="Product pages">
+    <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query|urlencode }}{% endif %}">Previous</a></li>
+      {% else %}
+        <li class="page-item disabled"><span class="page-link">Previous</span></li>
+      {% endif %}
+      {% for num in paginator.page_range %}
+        <li class="page-item {% if num == page_obj.number %}active{% endif %}">
+          <a class="page-link" href="?page={{ num }}{% if query %}&q={{ query|urlencode }}{% endif %}">{{ num }}</a>
+        </li>
+      {% endfor %}
+      {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query|urlencode }}{% endif %}">Next</a></li>
+      {% else %}
+        <li class="page-item disabled"><span class="page-link">Next</span></li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% endif %}
+
+  {% else %}
+  <div class="text-center py-5">
+    <p class="lead mb-1">No products found.</p>
+    <p class="text-muted">Try a different search, or add products in the admin panel.</p>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

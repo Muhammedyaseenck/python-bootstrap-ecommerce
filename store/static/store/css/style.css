@@ -1,0 +1,70 @@
+:root {
+  --ink: #14213d;
+  --sun: #fca311;
+  --sun-dark: #e18f00;
+  --mist: #eef1f7;
+  --line: #dde2ec;
+  --bs-body-font-family: "Source Sans 3", system-ui, sans-serif;
+  --bs-body-color: #1c2333;
+  --bs-body-bg: #ffffff;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand, .display-6 {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+a { color: var(--ink); }
+.link-ink { color: var(--ink); font-weight: 600; text-decoration-color: var(--sun); text-underline-offset: 4px; }
+
+/* Navigation */
+.site-nav { background: var(--ink); }
+.site-nav .navbar-brand { color: #fff; font-size: 1.5rem; font-weight: 800; }
+.site-nav .nav-link { color: rgba(255, 255, 255, 0.75); }
+.site-nav .nav-link:hover,
+.site-nav .nav-link.active { color: #fff; box-shadow: inset 0 -3px 0 var(--sun); }
+.site-nav .navbar-toggler { border-color: rgba(255, 255, 255, 0.5); }
+.site-nav .navbar-toggler-icon { filter: invert(1); }
+.nav-search .form-control { min-width: 220px; }
+
+/* Buttons */
+.btn-sun { background: var(--sun); border-color: var(--sun); color: var(--ink); font-weight: 600; }
+.btn-sun:hover, .btn-sun:focus { background: var(--sun-dark); border-color: var(--sun-dark); color: var(--ink); }
+.btn-ink { background: var(--ink); border-color: var(--ink); color: #fff; }
+.btn-ink:hover, .btn-ink:focus { background: #0c1529; border-color: #0c1529; color: #fff; }
+:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+
+/* Hero carousel */
+.hero-carousel .carousel-item img { height: 460px; object-fit: cover; }
+.carousel-caption-panel {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 3rem 0 3.25rem;
+  color: #fff;
+  background: linear-gradient(to top, rgba(20, 33, 61, 0.92), rgba(20, 33, 61, 0));
+}
+.carousel-caption-panel h1 { color: #fff; }
+.carousel-caption-panel .container { max-width: 1140px; }
+@media (max-width: 575.98px) {
+  .hero-carousel .carousel-item img { height: 340px; }
+  .carousel-caption-panel { padding: 2rem 0 2.5rem; }
+}
+
+/* Product cards */
+.product-card { border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.product-card .card-img-top { aspect-ratio: 4 / 3; object-fit: cover; background: var(--mist); }
+.product-card .card-title { color: var(--ink); }
+.price { font-family: "Bricolage Grotesque", system-ui, sans-serif; font-weight: 700; font-size: 1.15rem; color: var(--ink); }
+
+/* Info blocks */
+.info-block { background: var(--mist); border-radius: 6px; padding: 1.5rem; }
+.contact-list li { margin-bottom: 1rem; }
+
+/* Pagination */
+.pagination { --bs-pagination-active-bg: var(--ink); --bs-pagination-active-border-color: var(--ink); --bs-pagination-color: var(--ink); }
+
+/* Footer */
+.site-footer { background: var(--mist); color: #4a5468; font-size: 0.95rem; }
+.site-footer a { color: var(--ink); }
